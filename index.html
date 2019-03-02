@@ -13,9 +13,17 @@
 
 <body>
     <h1 id="header">Crystal Collector</h1>
+    <hr>
     <div class="info">
         <h3 id="subHeader">Instructions</h3>
-        <p id="instructions"></p>
+        <div class="instructions" id="instructions">
+            <ul>
+                <li>Each crystal is worth an unkown number of point.</li>
+                <li>Collect points in your total score by clicking on the crystals.</li>
+                <li>Earn a win by matching your total score to the Number to Match.</li>
+                <li>Go over the target number of points and you lose.</li>
+            </ul>
+        </div>
     </div>
     <hr>
     <div class="game">
@@ -23,8 +31,10 @@
             <h4 id="numToMatch">Number to match: <span id="targetText"></span></h4>
         </div>
         <div id="scoreboard">
+            <aside>
             <p id="winBlock">Wins: <span id="winText"></span></p>
             <p id="lossBlock">Losses: <span id="lossText"></span></p>
+            </aside>
         </div>
         <div id="crystals">
             <button class="crystal-button" id="redCrystal"><img class= "crystal-image" src="assets/images/red=crystal.png" alt="red-crystal"></button>
@@ -33,6 +43,7 @@
             <button class="crystal-button" id="yellowCrystal"><img class= "crystal-image" src="assets/images/yellow-crystal.png" alt="yellow-crystal"></button>
 
         </div>
+        <br>
         <div id="score">
             <h4>Your total score is: <span id="scoreText"></span></h4>
         </div>

@@ -1,4 +1,72 @@
 .crystal-image {
     width: 150px;
     height: 150px;
-  }
+}
+
+body {
+    width: 100%;
+    max-width: 960px;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    text-align: center;
+    margin: 0 auto;
+    color: white;
+    text-shadow: -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+    background: url("../images/mineshaft.png");
+    background-size: cover;
+}
+
+h1 { 
+    text-align: center;
+    font-size: 50px;
+    font-weight: bolder;
+    padding: 20px;
+    color: darkorange;
+    text-shadow: -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+.game {
+    max-width: 960px;
+    margin: auto;
+    padding: 10px;
+}
+
+.score {
+    padding-top: 20px;
+}
+
+#subHeader, 
+#numToMatch, 
+#score {
+    color: darkorange;
+    font-weight: bold;
+}
+
+#targetText, 
+#winText,
+#lossText,
+#scoreText {
+    color: white;
+    text-shadow: -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+/*
+text-shadow: -1px -1px 0 #000,
+1px -1px 0 #000,
+-1px 1px 0 #000,
+1px 1px 0 #000; 
+
+text-shadow: -1px -1px 0 white,
+        1px -1px 0 white,
+        -1px 1px 0 white,
+        1px 1px 0 white;
+
+

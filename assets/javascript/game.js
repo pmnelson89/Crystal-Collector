@@ -1,36 +1,14 @@
 $(document).ready(function () {
 
+    //Establishes the defalt values for the scoreboard.
+
     var totalScore = 0;
     var wins = 0;
     var losses = 0;
 
-    //set initial variable values
+    resetRound();
 
-    var targetNum = Math.floor(Math.random() * 101 + 19);
-    var redValue = Math.floor(Math.random() * 12 + 1);
-    var blueValue = Math.floor(Math.random() * 12 + 1);
-    var greenValue = Math.floor(Math.random() * 12 + 1);
-    var yellowValue = Math.floor(Math.random() * 12 + 1);
-    totalScore = 0;
-
-    //assign values to buttons
-
-    $("#redCrystal").attr("value", redValue);
-    $("#blueCrystal").attr("value", blueValue);
-    $("#greenCrystal").attr("value", greenValue);
-    $("#yellowCrystal").attr("value", yellowValue);
-
-    //display values in html
-
-    $("#targetText").text(targetNum);
-    $("#scoreText").text(totalScore);
-    
-    console.log("red = " + redValue);
-    console.log("blue = " + blueValue);
-    console.log("green = " + greenValue);
-    console.log("yellow = " + yellowValue);
-
-    //reset button values and scoreboard
+    //Resets the values of the crystals, number to match, and total score at the beginning of the game and between rounds.
 
     function resetRound() {
         targetNum = Math.floor(Math.random() * 101 + 19);
@@ -43,6 +21,8 @@ $(document).ready(function () {
         $("#blueCrystal").attr("value", blueValue);
         $("#greenCrystal").attr("value", greenValue);
         $("#yellowCrystal").attr("value", yellowValue);
+        $("#winText").text(wins);
+        $("#lossText").text(losses);
         $("#targetText").text(targetNum);
         $("#scoreText").text(totalScore);
         console.log("red = " + redValue);
@@ -51,10 +31,17 @@ $(document).ready(function () {
         console.log("yellow = " + yellowValue);
     };
 
+    //Resets the entire game once the limit of wins or losses has been met.
 
-    //grab values when buttons are clicked and add them to total
+    function resetGame() {
+        wins = 0;
+        losses = 0;
+        //resetRound(); Can you not call a function within a funtion?
+    }
 
-    $(".crystal-button").on("click", function () {
+    // Assigns the value of the crystals clicked to the total score variable.
+
+    $(".crystal-button").click(function () {
 
         var crystalValue = ($(this).attr("value"));
         crystalValue = parseInt(crystalValue);
@@ -62,18 +49,30 @@ $(document).ready(function () {
 
         totalScore += crystalValue;
 
+        //Prints the total score to the html.
+
         console.log("total = " + totalScore);
         $("#scoreText").text(totalScore);
 
+        //Establishes the rules to gain a win or loss when the conditions are met.
         if (totalScore === targetNum) {
             wins++;
             $("#winText").text(wins);
             resetRound();
+            alert("Winner!");
         }
         else if (totalScore >= targetNum) {
             losses++;
             $("#lossText").text(losses);
             resetRound();
+            alert("You lose!");
+        }
+
+        //Establishes the rule to end the game if you lose too many times.
+        if (losses >= 5) {
+            resetRound();
+            resetGame();
+            alert("Game Over");
         }
 
     });
