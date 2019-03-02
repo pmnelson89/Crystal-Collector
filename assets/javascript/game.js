@@ -6,38 +6,37 @@ $(document).ready(function () {
     var wins = 0;
     var losses = 0;
 
+    //Resets the defalt values of the win/loss counter after the loss limit has been reached.
+
+    function resetGame () {
+        wins = 0;
+        losses = 0;
+    }
+
     resetRound();
 
     //Resets the values of the crystals, number to match, and total score at the beginning of the game and between rounds.
-
-    function resetRound() {
-        targetNum = Math.floor(Math.random() * 101 + 19);
-        redValue = Math.floor(Math.random() * 12 + 1);
-        blueValue = Math.floor(Math.random() * 12 + 1);
-        greenValue = Math.floor(Math.random() * 12 + 1);
-        yellowValue = Math.floor(Math.random() * 12 + 1);
-        totalScore = 0;
-        $("#redCrystal").attr("value", redValue);
-        $("#blueCrystal").attr("value", blueValue);
-        $("#greenCrystal").attr("value", greenValue);
-        $("#yellowCrystal").attr("value", yellowValue);
-        $("#winText").text(wins);
-        $("#lossText").text(losses);
-        $("#targetText").text(targetNum);
-        $("#scoreText").text(totalScore);
-        console.log("red = " + redValue);
-        console.log("blue = " + blueValue);
-        console.log("green = " + greenValue);
-        console.log("yellow = " + yellowValue);
-    };
-
-    //Resets the entire game once the limit of wins or losses has been met.
-
-    function resetGame() {
-        wins = 0;
-        losses = 0;
-        //resetRound(); Can you not call a function within a funtion?
-    }
+    
+        function resetRound() {
+            targetNum = Math.floor(Math.random() * 101 + 19);
+            redValue = Math.floor(Math.random() * 12 + 1);
+            blueValue = Math.floor(Math.random() * 12 + 1);
+            greenValue = Math.floor(Math.random() * 12 + 1);
+            yellowValue = Math.floor(Math.random() * 12 + 1);
+            totalScore = 0;
+            $("#redCrystal").attr("value", redValue);
+            $("#blueCrystal").attr("value", blueValue);
+            $("#greenCrystal").attr("value", greenValue);
+            $("#yellowCrystal").attr("value", yellowValue);
+            $("#winText").text(wins);
+            $("#lossText").text(losses);
+            $("#targetText").text(targetNum);
+            $("#scoreText").text(totalScore);
+            console.log("red = " + redValue);
+            console.log("blue = " + blueValue);
+            console.log("green = " + greenValue);
+            console.log("yellow = " + yellowValue);
+        }
 
     // Assigns the value of the crystals clicked to the total score variable.
 
@@ -59,24 +58,22 @@ $(document).ready(function () {
             wins++;
             $("#winText").text(wins);
             resetRound();
-            alert("Winner!");
         }
-        else if (totalScore >= targetNum) {
+        else if (totalScore > targetNum) {
+            console.log(totalScore);
+            console.log(targetNum);
             losses++;
             $("#lossText").text(losses);
             resetRound();
-            alert("You lose!");
-        }
-
-        //Establishes the rule to end the game if you lose too many times.
-        if (losses >= 5) {
-            resetRound();
-            resetGame();
-            alert("Game Over");
+            if (losses > 4) {
+                wins = 0;
+                losses = 0;
+                alert("You lost!");
+                resetRound();
+            }
         }
 
     });
-
 
 });
 
