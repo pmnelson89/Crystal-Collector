@@ -18,7 +18,6 @@ body {
     text-align: center;
     margin: 0 auto;
     color: white;
-   
     background: url("../images/mineshaft.png");
     background-size: cover;
     background-attachment: fixed;
@@ -58,6 +57,13 @@ h1 {
 #scoreText {
     color: white;
 }
+
+.crystal-image, .crystal-button{
+   background: transparent;
+   border: 0px;
+   cursor: pointer;
+}
+
    
 
 
