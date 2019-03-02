@@ -6,16 +6,10 @@ $(document).ready(function () {
     var wins = 0;
     var losses = 0;
 
-    //Resets the defalt values of the win/loss counter after the loss limit has been reached.
-
-    function resetGame () {
-        wins = 0;
-        losses = 0;
-    }
-
+    //Sets the game to the default setting.
     resetRound();
 
-    //Resets the values of the crystals, number to match, and total score at the beginning of the game and between rounds.
+        //Resets the values of the crystals, number to match, and total score at the beginning of the game and between rounds.
     
         function resetRound() {
             targetNum = Math.floor(Math.random() * 101 + 19);
@@ -65,6 +59,8 @@ $(document).ready(function () {
             losses++;
             $("#lossText").text(losses);
             resetRound();
+
+            //Resets the entire game if you lose 5 times.
             if (losses > 4) {
                 wins = 0;
                 losses = 0;
